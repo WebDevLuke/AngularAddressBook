@@ -1,0 +1,34 @@
+body {
+	padding-top:50px;
+	height:3000px;
+	font-size:18px;
+	line-height:24px;
+}
+
+#search {
+	max-width:750px;
+	margin:50px 0 0 0;
+}
+
+.letter {
+	margin-bottom:0;
+}
+
+.entry, .letter {
+	border-bottom:1px solid #ccc;
+	padding:1.0em 0;
+}
+
+.entry > a {
+	line-height:34px;
+}
+
+.manage {
+	opacity:0;
+	transition:opacity .25s;
+}
+
+.entry:hover .manage {
+	opacity:1;
+}
+	

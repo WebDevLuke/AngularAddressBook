@@ -15,7 +15,7 @@ var glob = require('glob');
 var streamify = require('gulp-streamify');
 var runSequence = require('run-sequence');
 
-var minify = true;
+var minify = false;
 
 /*
 |--------------------------------------------------------------------
@@ -82,7 +82,7 @@ gulp.task('js', function(){
 // Copy Misc Files Task
 gulp.task('copy', function() {
 	// Copy all non-directory files
-	gulp.src('dev/*.+(xml|txt|json|php|html)')
+	gulp.src('dev/**/*.+(xml|txt|json|php|html|css)')
 	.pipe(gulp.dest('dist/'));
 });
 
@@ -96,8 +96,7 @@ gulp.task('copy', function() {
 
 // WATCH FUNCTION
 gulp.task("watch", function() {
-	gulp.watch('dev/js/**/*.html',['copy']);
-	gulp.watch('dev/js/**/*.css',['copy']);
+	gulp.watch('dev/**/*.+(xml|txt|json|php|html|css)',['copy']);
 	gulp.watch('dev/js/**/*.js',['js']);
 });
 
