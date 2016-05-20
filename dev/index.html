@@ -3,8 +3,9 @@
 	<title>Angular Address Book</title>
 	<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/app.js"></script>
 </head>
-<body>
+<body ng-controller="contactsController as addressBook">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -30,17 +31,17 @@
 		<p>View your address book below. Add, update and delete entries at will. Click on an entry for more information.</p>
 		<div id="search" class="input-group input-group-lg">
 		  <span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
-		  <input type="text" class="form-control" placeholder="Search" aria-describedby="search">
+		  <input type="text" class="form-control" placeholder="Search" aria-describedby="search" ng-model="search">
 		</div>
 	</div>
 </div>
 
-<div class="container">
 
-<!-- 	<h2 class="letter">A</h2> -->
 
-	<div class="entry clearfix">
-		<a href="/">Tester Jester</a>
+<div class="container contacts">
+
+	<div class="entry clearfix" ng-repeat="contact in addressBook.contacts | filter:{fullName:search}">
+		<a href="/">{{contact.firstName}} {{contact.lastName}}</a>
 		<div class="btn-group pull-right manage">
 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Manage <span class="caret"></span>
@@ -55,7 +56,7 @@
 
 </div>
 
-<script src="js/app.js"></script>
+
 
 </body>
 </html>
