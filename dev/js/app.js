@@ -2,12 +2,14 @@
 
 var $ = require('jquery')(window);
 global.jQuery = require("jquery");
-
-// Import Bootstrap
 var bootstrap = require("bootstrap");
-
-// Import Angular
 var angular = require("angular");
+var app = angular.module('app', []);
 
-// Import Controllers
-require('./controllers');
+// Pull in modules
+var contactsController = require('./controllers/contactsController');
+var contactsService = require('./services/contactsService');
+
+// Create controllers and services
+app.service('contactsService', contactsService);
+app.controller('contactsController', ['$scope', 'contactsService', contactsController]); 
