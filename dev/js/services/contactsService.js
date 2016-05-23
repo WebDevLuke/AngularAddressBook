@@ -3,11 +3,10 @@
 module.exports = function(){
 
 	var service = {
+
+		contactsArray: [],
+
 		getContacts: function(){
-
-			var data = require("../../data/contacts");
-			localStorage.setItem('contacts', JSON.stringify(data));
-
 			if(localStorage.getItem("contacts")) {
 				this.contacts = JSON.parse(localStorage.getItem('contacts'));
 
@@ -17,6 +16,19 @@ module.exports = function(){
 				return this.contacts;
 			}
 			return false;
+		},
+ 
+		addNewContact: function(formData) {
+
+			// Push new data to contacts array
+			var newContactObj = this.getContacts();
+			newContactObj.push(formData);
+
+			// Stringify and push to local storage
+			localStorage.setItem('contacts', JSON.stringify(newContactObj));
+
+			return newContactObj;
+
 		}
 	}
 

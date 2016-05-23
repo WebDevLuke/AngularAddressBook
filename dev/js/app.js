@@ -6,10 +6,13 @@ var bootstrap = require("bootstrap");
 var angular = require("angular");
 var app = angular.module('app', []);
 
-// Pull in modules
-var contactsController = require('./controllers/contactsController');
-var contactsService = require('./services/contactsService');
+// Create services
+app.service('contactsService', require('./services/contactsService')); 
 
-// Create controllers and services
-app.service('contactsService', contactsService);
-app.controller('contactsController', ['$scope', 'contactsService', contactsController]); 
+// Creative Directives
+//app.directive("closeFormBtn", ['contactsService', require('./directives/closeFormBtn')]);
+//app.directive("closeFormBtn", require('./directives/closeFormBtn'));
+
+// Create containers
+app.controller('contactsController', ['$scope', 'contactsService', require('./controllers/contactsController')]); 
+app.controller('formController', ['$scope', 'contactsService', require('./controllers/formController')]); 
