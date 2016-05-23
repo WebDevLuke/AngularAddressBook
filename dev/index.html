@@ -7,19 +7,46 @@
 </head>
 <body ng-controller="contactsController as addressBook">
 
+<div class="modal fade modal__add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactModel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="addressBook.contactForm.clear()"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="exampleModalLabel">New Contact</h4>
+			</div>
+			<form id="add-contact" ng-submit="addressBook.contactForm.submit()">
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="recipient-name" class="control-label">First Name:</label>
+						<input type="text" class="form-control" name="first-name" required>
+					</div>
+					<div class="form-group">
+						<label for="recipient-name" class="control-label">Last Name:</label>
+						<input type="text" class="form-control" name="last-name" required>
+					</div>
+					<div class="form-group">
+						<label for="recipient-name" class="control-label">Email Address:</label>
+						<input type="text" class="form-control" name="email-address" required>
+					</div>
+					<div class="form-group">
+						<label for="recipient-name" class="control-label">Telephone Number:</label>
+						<input type="text" class="form-control" name="telephone-number" required>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addressBook.contactForm.clear()">Close</button>
+					<button type="submit" class="btn btn-primary">+ Add Contact</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
+		<div id="navbar">
 			<div class="navbar-form navbar-right">
-				<div class="btn btn-primary">+ New Contact</div>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal__add-contact">+ New Contact</button>
 			</div>
 		</div><!--/.navbar-collapse -->
 	</div>
@@ -36,12 +63,12 @@
 	</div>
 </div>
 
-
-
 <div class="container contacts">
 
+	<h3 ng-show="!addressBook.contacts">There aren't any contacts here. To add one click "New Contact".</h3>
+
 	<div class="entry clearfix" ng-repeat="contact in addressBook.contacts | filter:{fullName:search}">
-		<a href="/">{{contact.firstName}} {{contact.lastName}}</a>
+		<a href="/">{{contact.fullName}}</a>
 		<div class="btn-group pull-right manage">
 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Manage <span class="caret"></span>
