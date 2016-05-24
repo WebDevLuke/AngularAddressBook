@@ -7,11 +7,11 @@ var angular = require("angular");
 var app = angular.module('app', []);
 
 // Create services
-app.service('contactsService', require('./services/contactsService')); 
+app.service('contactsService', require('./services/contactsService'));  
 
 // Creative Directives
 //app.directive("closeFormBtn", ['contactsService', require('./directives/closeFormBtn')]);
-//app.directive("closeFormBtn", require('./directives/closeFormBtn'));
+app.directive("testDirective", require('./directives/testDirective'));
 
 // Create containers
 app.controller('contactsController', ['$scope', 'contactsService', require('./controllers/contactsController')]); 

@@ -29,4 +29,8 @@ body {
 .entry:hover .manage {
 	opacity:1;
 }
+
+.navbar .container {
+	margin-top:8px;
+}
 	
