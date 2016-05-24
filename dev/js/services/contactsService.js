@@ -4,23 +4,28 @@ module.exports = function(){
 
 	var service = { 
 
-		contacts: [], 
+		contacts: {},
 
 		getContacts: function(){
+			// Get from local storage if exists
 			if(localStorage.getItem("contacts")) {
-				this.contacts = JSON.parse(localStorage.getItem('contacts'));
-				return this.contacts;
+				var contactsList = JSON.parse(localStorage.getItem('contacts'));	
+				this.contacts = contactsList;
 			}
+
+			console.log(this.contacts);
+
 		},
  
 		addNewContact: function(formData) {
 			// Create fullName parameter
 			formData.fullName = formData.firstName + " " + formData.lastName;
 
-			// Push new data to contacts
-			this.contacts.push(formData);
-
-			console.log(this.contacts);
+			var firstLetter = formData.firstName.substring(0,1).toUpperCase();
+			if(!this.contacts[firstLetter]) {
+				this.contacts[firstLetter] = [];
+			}
+			this.contacts[firstLetter].push(formData);
 
 			// Push to local storage
 			localStorage.setItem('contacts', JSON.stringify(this.contacts));
