@@ -1,5 +1,7 @@
 "use strict"
 
 module.exports = function($scope, contactsService){
-	this.contacts = contactsService.getContacts();
+	contactsService.getContacts();
+	this.contacts = contactsService.contacts;
+	console.log(this.contacts);
 };

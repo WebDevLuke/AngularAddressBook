@@ -2,33 +2,38 @@
 
 module.exports = function(){
 
-	var service = {
-
-		contactsArray: [],
-
+	var service = { 
 		getContacts: function(){
 			if(localStorage.getItem("contacts")) {
 				this.contacts = JSON.parse(localStorage.getItem('contacts'));
-
-				for(var i = 0; i < this.contacts.length; i++) {
-					this.contacts[i].fullName = this.contacts[i].firstName + " " + this.contacts[i].lastName;
-				}
 				return this.contacts;
 			}
-			return false;
 		},
  
 		addNewContact: function(formData) {
 
-			// Push new data to contacts array
-			var newContactObj = this.getContacts();
-			newContactObj.push(formData);
+			// Create empty array if none exists
+			if(!this.contacts) {
+				this.contacts = [];
+			}	
 
-			// Stringify and push to local storage
-			localStorage.setItem('contacts', JSON.stringify(newContactObj));
+			// Create fullName parameter
+			formData.fullName = formData.firstName + " " + formData.lastName;
 
-			return newContactObj;
+			// Push new data to contacts
+			this.contacts.push(formData);
 
+			// Store latest contacts array in local
+			// First we need to strip hashkey
+			var objStore = this.contacts;
+			for(var i = 0; i < objStore.length; i++) {
+				if(objStore[i].$$hashKey) {
+					delete objStore[i].$$hashKey;
+				}
+			}
+
+			// Push to local storage
+			localStorage.setItem('contacts', JSON.stringify(objStore));
 		}
 	}
 
