@@ -3,6 +3,9 @@
 module.exports = function(){
 
 	var service = { 
+
+		contacts: [], 
+
 		getContacts: function(){
 			if(localStorage.getItem("contacts")) {
 				this.contacts = JSON.parse(localStorage.getItem('contacts'));
@@ -11,11 +14,6 @@ module.exports = function(){
 		},
  
 		addNewContact: function(formData) {
-
-			// Create empty array if none exists
-			if(!this.contacts) {
-				this.contacts = [];
-			}	
 
 			// Create fullName parameter
 			formData.fullName = formData.firstName + " " + formData.lastName;
@@ -26,7 +24,7 @@ module.exports = function(){
 			// Store latest contacts array in local
 			// First we need to strip hashkey
 			var objStore = this.contacts;
-			for(var i = 0; i < objStore.length; i++) {
+			for(var i = 0; i < objStore.length; i++) { 
 				if(objStore[i].$$hashKey) {
 					delete objStore[i].$$hashKey;
 				}

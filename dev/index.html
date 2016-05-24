@@ -67,7 +67,7 @@
 
 	<h3 ng-show="!addressBook.contacts">There aren't any contacts here. To add one click "New Contact".</h3>
 
-	<div class="entry clearfix" ng-repeat="contact in addressBook.contacts | filter:{fullName:search}">
+	<div class="entry clearfix" ng-repeat="contact in addressBook.contacts | filter:{fullName:search} track by $index ">
 		<a href="/">{{contact.fullName}}</a>
 		<div class="btn-group pull-right manage">
 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

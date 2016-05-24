@@ -7,6 +7,7 @@ module.exports = function($scope, contactsService){
 	}
 
 	this.submitForm = function(){
+		console.log($scope.formData);
 		contactsService.addNewContact($scope.formData);
 	}
 
