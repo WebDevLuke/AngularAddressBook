@@ -24,7 +24,12 @@ module.exports = function(){
 
 			// Push to local storage
 			localStorage.setItem('contacts', JSON.stringify(this.contacts));
+		},
+
+		deleteContact: function(index) {
+			this.contacts.splice(index, 1);
 		}
+
 	}
 
 	return service;
