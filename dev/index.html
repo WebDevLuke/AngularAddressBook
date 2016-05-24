@@ -11,31 +11,31 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="contactsForm.closeForm()"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="exampleModalLabel">New Contact</h4>
 			</div>
-			<form id="add-contact" ng-submit="contactsForm.submitForm()">
+			<form id="add-contact">
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">First Name:</label>
-						<input type="text" class="form-control" ng-model="formData.firstName" name="first-name" required>
+						<input type="text" class="form-control" ng-model="formData.firstName" name="first-name" id="first-name" required>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">Last Name:</label>
-						<input type="text" class="form-control" ng-model="formData.lastName" name="last-name" required>
+						<input type="text" class="form-control" ng-model="formData.lastName" name="last-name" id="last-name" required>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">Email Address:</label>
-						<input type="email" class="form-control" ng-model="formData.emailAddress" name="email-address" required>
+						<input type="email" class="form-control" ng-model="formData.emailAddress" name="email-address" id="email-address" required>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">Telephone Number:</label>
-						<input type="text" class="form-control" ng-model="formData.telephoneNumber" name="telephone-number" required>
+						<input type="text" class="form-control" ng-model="formData.telephoneNumber" name="telephone-number" id="telephone-number" required>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="contactsForm.closeForm()">Close</button>
-					<button type="submit" class="btn btn-primary">+ Add Contact</button>
+					<button type="submit" data-dismiss="modal"  ng-click="contactsForm.submitForm()" class="btn btn-primary">+ Add Contact</button>
 				</div>
 			</form>
 		</div>
@@ -67,7 +67,7 @@
 
 	<h3 ng-show="!addressBook.contacts">There aren't any contacts here. To add one click "New Contact".</h3>
 
-	<div class="entry clearfix" ng-repeat="contact in addressBook.contacts | filter:{fullName:search} track by $index ">
+	<div class="entry clearfix" ng-repeat="contact in addressBook.contacts | filter:{fullName:search} track by $index">
 		<a href="/">{{contact.fullName}}</a>
 		<div class="btn-group pull-right manage">
 			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

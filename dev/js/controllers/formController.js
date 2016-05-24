@@ -7,8 +7,12 @@ module.exports = function($scope, contactsService){
 	}
 
 	this.submitForm = function(){
-		console.log($scope.formData);
-		contactsService.addNewContact($scope.formData);
+		var formData = {};
+		formData.firstName = document.getElementById("first-name").value;
+		formData.lastName = document.getElementById("last-name").value;
+		formData.emailAddress = document.getElementById("email-address").value;
+		formData.telephoneNumber = document.getElementById("telephone-number").value;
+		contactsService.addNewContact(formData);
 	}
 
 };

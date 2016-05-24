@@ -14,24 +14,16 @@ module.exports = function(){
 		},
  
 		addNewContact: function(formData) {
-
 			// Create fullName parameter
 			formData.fullName = formData.firstName + " " + formData.lastName;
 
 			// Push new data to contacts
 			this.contacts.push(formData);
 
-			// Store latest contacts array in local
-			// First we need to strip hashkey
-			var objStore = this.contacts;
-			for(var i = 0; i < objStore.length; i++) { 
-				if(objStore[i].$$hashKey) {
-					delete objStore[i].$$hashKey;
-				}
-			}
+			console.log(this.contacts);
 
 			// Push to local storage
-			localStorage.setItem('contacts', JSON.stringify(objStore));
+			localStorage.setItem('contacts', JSON.stringify(this.contacts));
 		}
 	}
 
