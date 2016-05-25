@@ -31,11 +31,20 @@ module.exports = function(){
 			localStorage.setItem('contacts', JSON.stringify(this.contacts));
 		},
 
+<<<<<<< HEAD
 		deleteContact: function(index) {
 			this.contacts.splice(index, 1);
 
 			// Push to local storage
 			localStorage.setItem('contacts', JSON.stringify(this.contacts));
+=======
+		deleteContact: function(item) {
+
+			this.contacts.splice(this.contacts.indexOf(item),1);
+
+			// Push to local storage
+			//localStorage.setItem('contacts', JSON.stringify(this.contacts));
+>>>>>>> develop
 		}
 
 	}

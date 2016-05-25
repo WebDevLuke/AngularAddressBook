@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<!-- Add Contact Model -->
+
 <div class="modal fade modal__add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactModel" ng-controller="formController as contactsForm">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -19,19 +19,19 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">First Name:</label>
-						<input type="text" class="form-control" ng-model="formData.firstName" name="first-name" id="first-name" required>
+						<input type="text" class="form-control" name="first-name" id="first-name" required>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">Last Name:</label>
-						<input type="text" class="form-control" ng-model="formData.lastName" name="last-name" id="last-name" required>
+						<input type="text" class="form-control" name="last-name" id="last-name" required>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">Email Address:</label>
-						<input type="email" class="form-control" ng-model="formData.emailAddress" name="email-address" id="email-address" required>
+						<input type="email" class="form-control" name="email-address" id="email-address" required>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">Telephone Number:</label>
-						<input type="text" class="form-control" ng-model="formData.telephoneNumber" name="telephone-number" id="telephone-number" required>
+						<input type="text" class="form-control" name="telephone-number" id="telephone-number" required>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -43,16 +43,16 @@
 	</div>
 </div>
 
-<!-- Navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top"> 
 	<div class="container">
-		<div class="pull-right">
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal__add-contact">+ New Contact</button>
-		</div>
+		<div id="navbar">
+			<div class="navbar-form navbar-right">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal__add-contact">+ New Contact</button>
+			</div>
+		</div><!--/.navbar-collapse -->
 	</div>
 </nav>
 
-<!-- Header & Search -->
 <div class="jumbotron">
 	<div class="container">
 		<h1>Address Book</h1>
@@ -64,20 +64,16 @@
 	</div>
 </div>
 
-<testDirective></testDirective>
-
-<!-- Address Book -->
 <div class="container contacts" ng-controller="contactsController as addressBook">
 
-	<!-- Delete Contact Model -->
 	<div class="modal fade modal__delete-contact" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4><p>Are you sure you want to delete {{addressBook.contacts[addressBook.contactIndex].fullName}}?</h4>
+					<h4>Are you sure you want to delete {{addressBook.contactToDelete.fullName}}?</h4>
 				</div>
 				<div class="modal-body text-center">
-					<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addressBook.deleteContact(addressBook.contactIndex)">Delete</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addressBook.deleteContact(addressBook.contactToDelete)">Delete</button>
 					<button type="button" class="btn" data-dismiss="modal">Cancel</button>
 				</div>
 			</div>
@@ -86,29 +82,25 @@
 
 	<h3 ng-show="!addressBook.contacts">There aren't any contacts here. To add one click "New Contact".</h3>
 
-	<div ng-repeat="(key, value) in addressBook.contacts">
-
-		<h3 class="letter" >{{key}}</h3>
-
-		<div class="entry clearfix" ng-repeat="contact in value | filter:{fullName:search} | orderBy:'firstName' track by $index">
-			<a href="">{{contact.fullName}}</a>
-			<div class="btn-group pull-right manage">
-				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-					Manage <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu contact-menu">
-					<li><a href="">View</a></li>
-					<li><a href="">Edit</a></li>
-					<li>
-						<a href="" data-toggle="modal" data-target=".modal__delete-contact" ng-click="addressBook.contactIndex = $index">Delete</a>
-					</li>
-				</ul>
-			</div>
+	<div class="entry clearfix" ng-repeat="contact in addressBook.contacts | filter:{fullName:search} | orderBy:'fullName' track by $index">
+		<a href="">{{contact.fullName}}</a>
+		<div class="btn-group pull-right manage">
+			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+				Manage <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu contact-menu">
+				<li><a href="">View</a></li>
+				<li><a href="">Edit</a></li>
+				<li>
+					<a href="" data-toggle="modal" data-target=".modal__delete-contact" ng-click="addressBook.contactToDelete = contact">Delete</a>
+				</li>
+			</ul>
 		</div>
-
 	</div>
 
 </div>
+
+
 
 </body>
 </html>
