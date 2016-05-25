@@ -84,6 +84,11 @@ gulp.task('copy', function() {
 	// Copy all non-directory files
 	gulp.src('dev/**/*.+(xml|txt|json|php|html|css)')
 	.pipe(gulp.dest('dist/'));
+
+	// Copy specified folders and contents
+    	gulp.src('*/+(fonts)/**', {base:"./dev/"})
+      .pipe(gulp.dest('dist/'));
+
 });
 
 /*

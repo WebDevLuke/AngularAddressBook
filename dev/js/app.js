@@ -16,5 +16,4 @@ app.directive("addContactModel", require("./directives/addContactModel"));
 app.directive("deleteContactModel", require("./directives/deleteContactModel"));  
 
 // Create containers
-app.controller('contactsController', ['$scope', 'contactsService', require('./controllers/contactsController')]); 
-app.controller('formController', ['$scope', 'contactsService', require('./controllers/formController')]); 
+app.controller('contactsController', ['$scope', 'contactsService', require('./controllers/contactsController')]);  
