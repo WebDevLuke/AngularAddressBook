@@ -4,7 +4,8 @@ var $ = require('jquery')(window);
 global.jQuery = require("jquery");
 var bootstrap = require("bootstrap");
 var angular = require("angular");
-var app = angular.module('app', []);
+var ngMessages = require("angular-messages");
+var app = angular.module('app', ['ngMessages']); 
 
 // Create services
 app.service('contactsService', require('./services/contactsService'));  

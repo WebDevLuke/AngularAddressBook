@@ -15,28 +15,42 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="exampleModalLabel">New Contact</h4>
 			</div>
-			<form id="add-contact">
+			<form id="addContact" name="addContact" novalidate ng-submit="addContact.$valid && contactsForm.submitForm()">
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">First Name:</label>
-						<input type="text" class="form-control" name="first-name" id="first-name" required>
+						<input type="text" class="form-control" ng-model="$contactsForm.data.firstName" name="firstName" id="first-name" required>
+						<div ng-messages="addContact.firstName.$error" ng-if="addContact.firstName.$touched && addContact.firstName.$error">
+							<div ng-message="required">You didn't enter a first name</div>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">Last Name:</label>
-						<input type="text" class="form-control" name="last-name" id="last-name" required>
+						<input type="text" class="form-control" ng-model="$contactsForm.data.lastName" name="lastName" id="last-name" required>
+						<div ng-messages="addContact.lastName.$error" ng-if="addContact.lastName.$touched && addContact.lastName.$error">
+							<div ng-message="required">You didn't enter a last name</div>
+						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group" >
 						<label for="recipient-name" class="control-label">Email Address:</label>
-						<input type="email" class="form-control" name="email-address" id="email-address" required>
+						<input type="email" class="form-control" ng-model="$contactsForm.data.emailAddress" name="emailAddress" id="email-address" required>
+						<div ng-messages="addContact.emailAddress.$error" ng-if="addContact.emailAddress.$touched && addContact.emailAddress.$error">
+							<div ng-message="required">You did not enter an email address</div>
+							<div ng-message="email">You did not enter a valid email address</div>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">Telephone Number:</label>
-						<input type="text" class="form-control" name="telephone-number" id="telephone-number" required>
+						<input type="text" class="form-control" ng-model="$contactsForm.data.telephoneNumber" name="telephoneNumber" id="telephone-number" required>
+						<div ng-messages="addContact.telephoneNumber.$error" ng-if="addContact.telephoneNumber.$touched && addContact.telephoneNumber.$error">
+							<div ng-message="required">You didn't enter a telephone number</div>
+						</div>
 					</div>
-				</div>
+				</div>	
+
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="contactsForm.closeForm()">Close</button>
-					<button type="submit" data-dismiss="modal"  ng-click="contactsForm.submitForm()" class="btn btn-primary">+ Add Contact</button>
+					<button type="submit" class="btn btn-primary">+ Add Contact</button>
 				</div>
 			</form>
 		</div>

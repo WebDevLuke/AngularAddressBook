@@ -34,3 +34,7 @@ body {
 	margin-top:8px;
 }
 	
+input.ng-dirty.ng-invalid {
+	border-color:#E1482F;
+	background:#FFEBE6;
+}

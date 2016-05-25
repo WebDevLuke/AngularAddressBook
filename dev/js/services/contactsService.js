@@ -31,7 +31,7 @@ module.exports = function(){
 			this.contacts.splice(this.contacts.indexOf(item),1);
 
 			// Push to local storage
-			localStorage.setItem('contacts', JSON.stringify(this.contacts));
+			localStorage.setItem('contacts', JSON.stringify(this.contacts)); 
 		}
 
 	}

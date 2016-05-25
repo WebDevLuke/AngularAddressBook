@@ -3,7 +3,7 @@
 module.exports = function($scope, contactsService){ 
 
 	this.closeForm = function(){
-		document.getElementById("add-contact").reset();
+		document.getElementById("addContact").reset();
 	}
 
 	this.submitForm = function(){
