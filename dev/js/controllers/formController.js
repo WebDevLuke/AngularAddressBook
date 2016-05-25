@@ -4,6 +4,8 @@ module.exports = function($scope, contactsService){
 
 	this.closeForm = function(){
 		document.getElementById("addContact").reset();
+		$scope.addContact.$setPristine();
+		$scope.addContact.$setUntouched();
 	}
 
 	this.submitForm = function(){

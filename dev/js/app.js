@@ -10,9 +10,10 @@ var app = angular.module('app', ['ngMessages']);
 // Create services
 app.service('contactsService', require('./services/contactsService'));  
 
-// Creative Directives
-//app.directive("closeFormBtn", ['contactsService', require('./directives/closeFormBtn')]);
-app.directive("testDirective", require('./directives/testDirective'));
+// Create custom directives
+app.directive("contact", require("./directives/contact"));
+app.directive("addContactModel", require("./directives/addContactModel"));
+app.directive("deleteContactModel", require("./directives/deleteContactModel"));  
 
 // Create containers
 app.controller('contactsController', ['$scope', 'contactsService', require('./controllers/contactsController')]); 

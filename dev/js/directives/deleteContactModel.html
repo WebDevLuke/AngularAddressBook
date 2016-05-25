@@ -1,0 +1,13 @@
+<div class="modal fade modal__delete-contact" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4>Are you sure you want to delete {{addressBook.contactToDelete.fullName}}?</h4>
+			</div>
+			<div class="modal-body text-center">
+				<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addressBook.deleteContact(addressBook.contactToDelete)">Delete</button>
+				<button type="button" class="btn" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div> 
+</div>
