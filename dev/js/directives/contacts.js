@@ -8,8 +8,7 @@ module.exports = function(contactsService){
 		controller: function($scope){
 			contactsService.getContacts();
 			this.contacts = contactsService.contacts;
-			this.deleteContact = contactsService.deleteContact;
-			console.log($scope);
+			this.deleteContact = contactsService.deleteContact; 
 		},
 		controllerAs: "addressBook" 
 	}
