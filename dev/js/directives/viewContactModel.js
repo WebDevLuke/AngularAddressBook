@@ -3,7 +3,7 @@
 module.exports = function(){
 	return {
 		restrict: "E",
-		templateUrl: "js/directives/contact.html",
-		replace:"true" 
+		templateUrl: "js/directives/viewContactModel.html",
+		replace:"true"
 	}
 };

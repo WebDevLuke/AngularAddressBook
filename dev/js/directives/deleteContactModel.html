@@ -2,11 +2,11 @@
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4>Are you sure you want to delete {{addressBook.contactToDelete.fullName}}?</h4>
+				<h4>Are you sure you want to delete {{contact.fullName}}?</h4>
 			</div>
 			<div class="modal-body text-center">
-				<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addressBook.deleteContact(addressBook.contactToDelete)">Delete</button>
-				<button type="button" class="btn" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteContact(contact)">Delete</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
 	</div> 

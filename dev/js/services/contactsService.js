@@ -8,8 +8,8 @@ module.exports = function(){
 
 		getContacts: function(){
 			if(localStorage.getItem("contacts")) {
-				this.contacts = JSON.parse(localStorage.getItem('contacts'));
-				return this.contacts;
+				service.contacts = JSON.parse(localStorage.getItem('contacts'));
+				return service.contacts;
 			}
 		},
  
@@ -18,20 +18,22 @@ module.exports = function(){
 			formData.fullName = formData.firstName + " " + formData.lastName;
 
 			// Push new data to contacts
-			this.contacts.push(formData);
+			service.contacts.push(formData);
 
-			console.log(this.contacts);
+			console.log(service.contacts);
 
 			// Push to local storage
-			localStorage.setItem('contacts', JSON.stringify(this.contacts));
+			localStorage.setItem('contacts', JSON.stringify(service.contacts));
 		},
 
 		deleteContact: function(item) {
 
-			this.contacts.splice(this.contacts.indexOf(item),1);
+			console.log("DELETING")
+
+			service.contacts.splice(service.contacts.indexOf(item),1);
 
 			// Push to local storage
-			localStorage.setItem('contacts', JSON.stringify(this.contacts)); 
+			localStorage.setItem('contacts', JSON.stringify(service.contacts)); 
 		}
 
 	}

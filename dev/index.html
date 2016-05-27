@@ -8,6 +8,7 @@
 <body>
 
 <add-contact-model></add-contact-model>
+<view-contact-model></view-contact-model> 
 
 <nav class="navbar navbar-inverse navbar-fixed-top"> 
 	<div class="container">
@@ -26,12 +27,7 @@
 	</div>
 </div>
 
-<div class="container contacts" ng-controller="contactsController as addressBook">
-	<delete-contact-model></delete-contact-model> 
-	<h3 ng-show="!addressBook.contacts">There aren't any contacts here. To add one click "New Contact".</h3>
-	<contact></contact>
-</div>
-
+<contacts></contacts>
 
 
 </body>
